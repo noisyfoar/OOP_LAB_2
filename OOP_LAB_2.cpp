@@ -210,5 +210,62 @@ class Heir : public Parent {
 
 int main()
 {
+    char choice;
+    char skip;
+    do {
+        cout << "Select and enter the appropriate number:\n"
+            "   1 - static creating of object \n"
+            "   2 - dynamic creating of object\n"
+            "   3 - composition\n"
+            "   4 - creating an object of the parent class using the constructor of the heir class\n"
+            "   5 - agregation\n"
+            "   6 - in the parent class there is a constructor and a destructor, and in the heir class there is neither(creating Parent)\n"
+            "   7 - in the parent class there is a constructor and a destructor, and in the heir class there is neither(creating Heir)\n"
+            "   q - exit\n";
+        cin >> choice;
+        switch (choice) {
+        case '1': {
+            Point point;
+            break;
+        }
+        case '2': {
+            Point3D* point3 = new Point3D();
+            // создается переменная-указатель, создается объект в памяти и возвращается его адрес, этот адрес записывается в созданную переменную-указатель
+            delete point3;
+            break;
+        }
+        case '3': {
+            Point point1;
+            // создается обьект
+            Point point2 = point1;
+            // создание обьекта через конструктор копирования
+            point1.set(3, 3);
+            point2.set(1, 1);
+            Section section(point1, point2);
+            // создание обьекта через конструктор копирования         
+            break;
+        }
+        case '4': {
+            Point* point = new Point3D();
+            break;
+        }
+        case '5': {
+            Section_PTR section;
+            break;
+        }
+        case '6': {
+            Parent parent;
+            break;
+        }
+        case '7': {
+            Heir heir;
+            break;
+        }
+        }
+        do {
+            cout << "   Enter 's' to go next:\n";
+            cin >> skip;
+        } while (skip != 's');
+    } while (choice != 'q');
     return 0;
 }
